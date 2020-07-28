@@ -18,7 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResources([
-    'ciudadanos' => 'CiudadanoController',
-    'solicitudes' => 'SolicitudController',
-]);
+Route::post('/solicitudes','SolicitudController@store');
+

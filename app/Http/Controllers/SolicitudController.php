@@ -26,13 +26,13 @@ class SolicitudController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'CURP' => 'required|min:16',
+            'CURP' => 'required|min:18',
             'FechaRegistro' => 'nullable|date',
             'FechaPago' => 'nullable|date',
             'Referencia' => 'required',
-            'EstatusPago' => 'required'
+            'EstatusPago' => 'required',
         ]);
-        $solicitud = new Solicitud;
+        $solicitud = new Solicitud();
 
         $solicitud->CURP = $request->CURP;
         $solicitud->FechaRegistro = $request->FechaRegistro;
@@ -42,7 +42,7 @@ class SolicitudController extends Controller
 
         $solicitud->save();
 
-        return $solicitud;
+        return json_encode($solicitud);
     }
 
     /**
